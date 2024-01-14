@@ -1,4 +1,4 @@
-export const sessionControl = (req,res ,next) => {
+export const sessionControl = (req,res , next) => {
     if(req.session.isLogged)
     {
         return res.redirect("/");
