@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h2><%= header %></h2>
+
+    <% if(session.username) { %>
+        <a href="/auth/logout">Çıkış Yap</a>
+   <% }else{ %>
+        <a href="/auth/login">Giriş Yap </a>
+   <% } %>
+</body>
+</html>
