@@ -10,12 +10,12 @@
     <% if(typeof errors !== 'undefined'){ %>
         <% for(let error  of errors) { %>
             <div style="background-color: #ae3423; color:aliceblue; padding:5px">
-                <%= error.msg %>br
+                <%= error.msg %> <br>
             </div>
         <% } %>
     <% } %>
 
-    <form action="/auth/register" method="post">
+    <form action="/auth/register" enctype="multipart/form-data" method="post">
         <input type="text" name="username" placeholder="Username"  value=<%= typeof formData !== 'undefined' ? formData.username :'' %>>
         <br>
         <input type="text" name="email" placeholder="E-mail"  value=<%= typeof formData !== 'undefined' ? formData.email :'' %>>

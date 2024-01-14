@@ -1,11 +1,25 @@
 import {validationResult} from 'express-validator'
+import path from 'path'
 export const getRegisterController = (req, res) => {
 res.render('auth/register')
 }
 export const postRegisterController = (req, res) => {
     res.locals.formData = req.body 
     const errors = validationResult(req);
-   
+    console.log(errors)
+    if(errors.isEmpty())
+    {
+        let avatar = req.files.avatar;
+       // Dosyayı belirli bir klasöre kaydetme
+        let path = 'uploads/'+ avatar.name;
+    avatar.mv(path, (err) => {
+        if (err) {
+        return res.status(500).send(err);
+        }
+        
+        res.send('Dosya başarıyla yüklendi.');
+      });
+    }
     res.render('auth/register' , {
         errors : errors.array()
     })
