@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Register Form</h1>
+    <% if(typeof error !== 'undefined'){ %>
+        <div style="background-color: #ae3423; color:aliceblue; padding:5px">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <form action="/auth/register" method="post">
+        <input type="text" name="username" placeholder="Username"  value=<%= typeof formData !== 'undefined' ? formData.username :'' %>>
+        <br>
+        <input type="text" name="email" placeholder="E-mail"  value=<%= typeof formData !== 'undefined' ? formData.email :'' %>>
+        <br>
+        <input type="password" name="password" placeholder="Parola">
+        <br>
+        <input type="password" name="passwordConfirm" placeholder="Parola - Tekrar" id="">
+        <br>
+        <input type="file" name="avatar" id="">
+        <br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

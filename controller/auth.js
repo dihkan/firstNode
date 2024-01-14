@@ -1,8 +1,18 @@
+import {validationResult} from 'express-validator'
+export const getRegisterController = (req, res) => {
+res.render('auth/register')
+}
+export const postRegisterController = (req, res) => {
+    res.locals.formData = req.body 
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array()});
+    }
+}
 export const getLoginController = (req,res) => {
     res.render("auth/login")
     res.locals.formData = "undefined"
 }
-
 export const postLoginController = (req, res) => {
     const {username , password} = req.body 
     let error;
@@ -26,6 +36,7 @@ export const postLoginController = (req, res) => {
     };
     res.redirect("/")
 }
+
 
 export const logoutController = (req, res) => {
     req.session.destroy();
